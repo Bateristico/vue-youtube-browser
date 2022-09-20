@@ -2,8 +2,7 @@
   <div>
     Hi there!!!!
     <search-bar @termChange="onTermChange"></search-bar>
-    <video-list></video-list>
-    {{ videos.length }}
+    <video-list :videos="videos"></video-list>
   </div>
 </template>
 
