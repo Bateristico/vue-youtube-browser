@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <video-list-item v-for="video in videos" :key="video"></video-list-item>
+    <video-list-item v-for="video in videos" :key="video" :video="video.etag"></video-list-item>
   </ul>
 </template>
 
@@ -12,7 +12,7 @@ export default {
   components: { VideoListItem },
   props: {
     videos: {
-      type: Array
+      type: Object
     }
   }
 };
