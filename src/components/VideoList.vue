@@ -2,8 +2,8 @@
   <ul class="list-group">
     <video-list-item
       v-for="video in videos"
-      :key="video"
-      :video="video.etag"
+      :key="video.etag"
+      :video="video"
       @videoSelect="onVideoSelect"
     ></video-list-item>
   </ul>

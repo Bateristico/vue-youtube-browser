@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <search-bar @termChange="onTermChange"></search-bar>
-    <video-detail :video="onVideoSelect"></video-detail>
+    <video-detail :video="selectedVideo"></video-detail>
     <video-list @videoSelect="onVideoSelect" :videos="videos"></video-list>
   </div>
 </template>
@@ -19,7 +19,8 @@ export default {
   components: { SearchBar, VideoList, VideoDetail },
   data() {
     return {
-      videos: []
+      videos: [],
+      selectedVideo: null
     };
   },
   methods: {
@@ -33,14 +34,14 @@ export default {
             q: searchTerm
           }
         });
-        // console.log('youtube api response', response);
         this.videos = response.data.items;
+        console.log('this.videos', this.videos);
       } catch (error) {
         console.log('Error while calling google api: ', error);
       }
     },
     onVideoSelect(video) {
-      console.log(video);
+      this.selectedVideo = video;
       return { video };
     }
   }
