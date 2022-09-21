@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <search-bar @termChange="onTermChange"></search-bar>
-    <video-list :videos="videos"></video-list>
+    <video-detail :video="onVideoSelect"></video-detail>
+    <video-list @videoSelect="onVideoSelect" :videos="videos"></video-list>
   </div>
 </template>
 
@@ -9,11 +10,13 @@
 import axios from 'axios';
 import SearchBar from './components/SearchBar';
 import VideoList from './components/VideoList';
+import VideoDetail from './components/VideoDetail';
+
 const API_KEY = process.env.VUE_APP_YOUTUBE_API_KEY;
 
 export default {
   name: 'App',
-  components: { SearchBar, VideoList },
+  components: { SearchBar, VideoList, VideoDetail },
   data() {
     return {
       videos: []
@@ -35,6 +38,10 @@ export default {
       } catch (error) {
         console.log('Error while calling google api: ', error);
       }
+    },
+    onVideoSelect(video) {
+      console.log(video);
+      return { video };
     }
   }
 };
